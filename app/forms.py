@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, SubmitField
 from wtforms.validators import DataRequired, Email, Length
+from wtforms import StringField, IntegerField, SubmitField, PasswordField
 
 
 class PostForm(FlaskForm):
@@ -24,3 +24,9 @@ class ContactForm(FlaskForm):
     email = StringField('Your Email*', validators=[DataRequired(), Email(), Length(5, 120)])
     message = StringField('Your Message*', validators=[DataRequired(), Length(max=300)])
     submit = SubmitField('Submit')
+
+
+class LoginForm(FlaskForm):
+    username = StringField('Username*', validators=[DataRequired(), Length(3, 20)])
+    password = PasswordField('Password*', validators=[DataRequired(), Length(3, 20)])
+    submit = SubmitField('Login')

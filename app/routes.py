@@ -2,11 +2,12 @@ from datetime import datetime
 
 from flask import render_template, redirect, flash, url_for, request
 from flask_paginate import Pagination, get_page_args
+from flask_login import login_user
 
 from app import app, db
 from app.config import Config
-from app.models import Post, Resource, Contact
-from app.forms import PostForm, ContactForm, ResourceForm
+from app.models import Post, Resource, Contact, User
+from app.forms import PostForm, ContactForm, ResourceForm, LoginForm
 
 
 # Main routes
@@ -207,3 +208,18 @@ def admin_contact_list_view():
     pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
     return render_template('admin/contacts.html', object_list=paginated_list, page=page,
                            per_page=per_page, pagination=pagination)
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def admin_login_view():
+    form = LoginForm()
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        user = User.query.filter_by(username=username).first()
+        if user and user.password == password:
+            login_user(user)
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('Invalid username or password.', 'danger')
+    return render_template('admin/login.html', form=form)

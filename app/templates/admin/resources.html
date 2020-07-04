@@ -3,44 +3,46 @@
 {% set active_page='admin_resources' %}
 
 {% block body %}
-<div class="row mt-3">
-    <div class="col">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                    <th>Created</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for instance in object_list %}
-                <tr>
-                    <td>{{ instance.id }}</td>
-                    <td><a href="{{ instance.link }}">{{ instance.name }}</a></td>
-                    <td>{{ instance.description }}</td>
-                    <td>{{ instance.category }}</td>
-                    <td>{{ instance.created_on.strftime('%B %d, %Y at %H:%M:%S') }}</td>
-                    <td>
-                        <a href="{{ url_for('admin_resource_update_view', pk=instance.id) }}" class="mr-2">
-                            <i class="fa fa-edit text-primary"></i>
-                        </a>
-                        <a href="{{ url_for('admin_resource_delete_view', pk=instance.id) }}">
-                            <i class="fa fa-trash text-danger"></i>
-                        </a>
-                    </td>
-                </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-        <div class="d-flex justify-content-between">
-            {{ pagination.info }}
-            {{ pagination.links }}
+<div class="container">
+    <div class="row mt-3">
+        <div class="col">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Created</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for instance in object_list %}
+                    <tr>
+                        <td>{{ instance.id }}</td>
+                        <td><a href="{{ instance.link }}">{{ instance.name }}</a></td>
+                        <td>{{ instance.description }}</td>
+                        <td>{{ instance.category }}</td>
+                        <td>{{ instance.created_on.strftime('%B %d, %Y at %H:%M:%S') }}</td>
+                        <td>
+                            <a href="{{ url_for('admin_resource_update_view', pk=instance.id) }}" class="mr-2">
+                                <i class="fa fa-edit text-primary"></i>
+                            </a>
+                            <a href="{{ url_for('admin_resource_delete_view', pk=instance.id) }}">
+                                <i class="fa fa-trash text-danger"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-between">
+                {{ pagination.info }}
+                {{ pagination.links }}
+            </div>
         </div>
     </div>
 </div>
