@@ -14,7 +14,6 @@
             <h1>
                 <a href="{{ url_for('post_detail_view', pk=instance.id) }}" class="post-title">{{ instance.title }}</a>
             </h1>
-            <h4 class="post-content">{{ instance.content[:100] }}</h4>
             <p class="post-meta">Posted by {{ instance.author }} on {{ instance.created_on.strftime('%B %d, %Y') }}
                 <span class="reading-time mx-3" title="Estimated read time">
                     {{ instance.read_time }} mins  read

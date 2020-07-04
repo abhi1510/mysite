@@ -8,7 +8,7 @@
             <p class="post-meta">
                 Posted by {{ instance.author }} on {{ instance.created_on.strftime('%B %d, %Y') }}
             </p>
-            <h5 class="post-content">{{ instance.content }}</h5>
+            <h5 class="post-content">{{ instance.content|safe }}</h5>
         </div>
         <div class="col-sm-12 col-md-3">
             some

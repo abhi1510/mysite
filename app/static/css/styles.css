@@ -296,6 +296,7 @@ section {
 # Post List
 --------------------------------------------------------------*/
 .post-title {
+    font-size: 28px;
     color: var(--theme-primary);
 }
 

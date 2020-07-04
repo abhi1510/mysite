@@ -132,7 +132,7 @@ def admin_resource_create_view():
         db.session.commit()
         flash('Resource created successfully!', 'success')
         return redirect(url_for('admin_resource_list_view'))
-    return render_template('admin/resource-form.html', form=form)
+    return render_template('admin/resource-form.html', form=form, title='Create')
 
 
 @app.route('/admin/resources/<pk>/update', methods=['GET', 'POST'])
@@ -152,7 +152,7 @@ def admin_resource_update_view(pk):
         form.description.data = instance.description
         form.link.data = instance.link
         form.category.data = instance.category
-    return render_template('admin/resource-form.html', form=form, instance=instance)
+    return render_template('admin/resource-form.html', form=form, instance=instance, title='Update')
 
 
 @app.route('/admin/resources/<pk>/delete', methods=['GET', 'POST'])

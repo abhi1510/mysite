@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Email, Length
 
 class PostForm(FlaskForm):
     title = StringField('Title*', validators=[DataRequired(), Length(2, 80)])
-    content = StringField('Content*', validators=[DataRequired(), Length(10, 1000)])
+    content = StringField('Content*', validators=[DataRequired()])
     image_url = StringField('Image URL', validators=[Length(max=300)])
     read_time = IntegerField('Read Time*', validators=[DataRequired()])
     submit = SubmitField('Save Post')
@@ -14,7 +14,7 @@ class PostForm(FlaskForm):
 class ResourceForm(FlaskForm):
     name = StringField('Name*', validators=[DataRequired(), Length(max=30)])
     description = StringField('Description*', validators=[DataRequired(), Length(max=50)])
-    link = StringField('Link*', validators=[DataRequired(), Length(max=1000)])
+    link = StringField('Link*', validators=[DataRequired()])
     category = StringField('Category*', validators=[DataRequired(), Length(max=20)])
     submit = SubmitField('Save Resource')
 
