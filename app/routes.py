@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import render_template, redirect, flash, url_for, request
 from flask_paginate import Pagination, get_page_args
 
@@ -105,7 +107,37 @@ def admin_post_create_view():
         db.session.commit()
         flash('Post created successfully!', 'success')
         return redirect(url_for('admin_post_list_view'))
-    return render_template('admin/post-form.html', form=form)
+    return render_template('admin/post-form.html', form=form, title='Update')
+
+
+@app.route('/admin/posts/<pk>/update', methods=['GET', 'POST'])
+def admin_post_update_view(pk):
+    form = PostForm()
+    instance = Post.query.get(pk)
+    if form.validate_on_submit():
+        instance.title = form.title.data
+        instance.content = form.content.data
+        instance.image_url = form.image_url.data
+        instance.read_time = form.read_time.data
+        instance.updated_on = datetime.utcnow()
+        db.session.commit()
+        flash(f'Post \'{instance.title}\' updated successfully!', 'success')
+        return redirect(url_for('admin_post_list_view'))
+    elif request.method == 'GET':
+        form.title.data = instance.title
+        form.content.data = instance.content
+        form.image_url.data = instance.image_url
+        form.read_time.data = instance.read_time
+    return render_template('admin/post-form.html', form=form, instance=instance, title='Update')
+
+
+@app.route('/admin/posts/<pk>/delete')
+def admin_post_delete_view(pk):
+    instance = Post.query.get(pk)
+    db.session.delete(instance)
+    db.session.commit()
+    flash(f'Post with id {pk} deleted successfully!', 'info')
+    return redirect(url_for('admin_post_list_view'))
 
 
 @app.route('/admin/resources')
@@ -137,8 +169,8 @@ def admin_resource_create_view():
 
 @app.route('/admin/resources/<pk>/update', methods=['GET', 'POST'])
 def admin_resource_update_view(pk):
-    instance = Resource.query.get(pk)
     form = ResourceForm()
+    instance = Resource.query.get(pk)
     if form.validate_on_submit():
         instance.name = form.name.data
         instance.description = form.description.data
@@ -160,7 +192,7 @@ def admin_resource_delete_view(pk):
     instance = Resource.query.get(pk)
     db.session.delete(instance)
     db.session.commit()
-    flash('Resource deleted successfully!', 'info')
+    flash(f'Resource with id {pk} deleted successfully!', 'info')
     return redirect(url_for('admin_resource_list_view'))
 
 

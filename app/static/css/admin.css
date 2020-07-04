@@ -8,6 +8,7 @@ body {
 
 .table td {
     font-size: 14px;
+    padding: 10px;
 }
 
 .pagination {

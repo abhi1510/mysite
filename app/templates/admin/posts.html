@@ -4,7 +4,7 @@
 <div class="row mt-3">
     <div class="col">
         <div class="table-responsive">
-            <table class="table table-bordered post-table">
+            <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -32,8 +32,12 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="" class="mr-2"><i class="fa fa-edit text-primary"></i></a>
-                        <a href=""><i class="fa fa-trash text-danger"></i></a>
+                        <a href="{{ url_for('admin_post_update_view', pk=instance.id) }}" class="mr-2">
+                            <i class="fa fa-edit text-primary"></i>
+                        </a>
+                        <a href="{{ url_for('admin_post_delete_view', pk=instance.id) }}">
+                            <i class="fa fa-trash text-danger"></i>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}

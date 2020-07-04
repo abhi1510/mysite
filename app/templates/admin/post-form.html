@@ -5,10 +5,9 @@
 
 <div class="row">
     <div class="col">
-        <h2>Create Post</h2>
+        <h2>{{title}} Post</h2>
         <form action="" method="post" novalidate>
             {{ form.csrf_token }}
-
             <div class="row mb-3">
                 <div class="col-sm-12 col-md-8 col-lg-9">
                     {{ form.title.label(class="form-control-label") }}
