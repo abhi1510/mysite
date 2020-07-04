@@ -37,6 +37,6 @@ def create_contacts():
 if __name__ == '__main__':
     db.drop_all()
     db.create_all()
-    create_posts()
-    create_resources()
-    create_contacts()
+    # create_posts()
+    # create_resources()
+    # create_contacts()
