@@ -29,22 +29,22 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Home</a>
+                <li class="nav-item {% if active_page == 'admin_dashboard' %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('admin_dashboard') }}">Dashboard</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if active_page == 'admin_posts' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin_post_list_view') }}">Posts</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if active_page == 'admin_resources' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin_resource_list_view') }}">Resources</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if active_page == 'admin_contacts' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin_contact_list_view') }}">Contacts</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if active_page == 'admin_post_form' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin_post_create_view') }}">Create Post</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item {% if active_page == 'admin_resource_form' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin_resource_create_view') }}">Create Resource</a>
                 </li>
             </ul>

@@ -129,6 +129,12 @@ h1, h2, h3, h4, h5, h6 {
   color: #6f7180;
 }
 
+#sidebar .nav-menu a:hover,
+#sidebar .nav-menu .active > a,
+#sidebar .nav-menu li:hover > a {
+    color: #fff;
+}
+
 #sidebar .nav-menu a:hover i,
 #sidebar .nav-menu .active > a i,
 #sidebar .nav-menu li:hover > a i {
@@ -277,8 +283,8 @@ section {
 --------------------------------------------------------------*/
 
 #resources .card {
-  background: inherit;
-  border-radius: 0;
+  background: #fff;
+  border-left: 3px solid var(--theme-accent);
 }
 
 #resources .card-body h5 > a {

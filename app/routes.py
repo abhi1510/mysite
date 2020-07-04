@@ -52,6 +52,8 @@ def post_list_view():
 @app.route('/posts/<pk>')
 def post_detail_view(pk):
     post = Post.query.get(pk)
+    post.views = post.views + 1
+    db.session.commit()
     return render_template('blog/post-detail.html', instance=post)
 
 
@@ -107,7 +109,7 @@ def admin_post_create_view():
         db.session.commit()
         flash('Post created successfully!', 'success')
         return redirect(url_for('admin_post_list_view'))
-    return render_template('admin/post-form.html', form=form, title='Update')
+    return render_template('admin/post-form.html', form=form, title='Create')
 
 
 @app.route('/admin/posts/<pk>/update', methods=['GET', 'POST'])
@@ -187,7 +189,7 @@ def admin_resource_update_view(pk):
     return render_template('admin/resource-form.html', form=form, instance=instance, title='Update')
 
 
-@app.route('/admin/resources/<pk>/delete', methods=['GET', 'POST'])
+@app.route('/admin/resources/<pk>/delete')
 def admin_resource_delete_view(pk):
     instance = Resource.query.get(pk)
     db.session.delete(instance)

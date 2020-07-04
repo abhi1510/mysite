@@ -1,5 +1,7 @@
 {% extends 'admin/layout.html' %}
 
+{% set active_page='admin_posts' %}
+
 {% block body %}
 <div class="row mt-3">
     <div class="col">
@@ -26,7 +28,7 @@
                     <td>{{ instance.created_on.strftime('%B %d, %Y at %H:%M:%S') }}</td>
                     <td>
                         {% if instance.updated_on %}
-                        {{ instance.created_on.strftime('%B %d, %Y') }}
+                        {{ instance.updated_on.strftime('%B %d, %Y at %H:%M:%S') }}
                         {% else %}
                         -
                         {% endif %}
