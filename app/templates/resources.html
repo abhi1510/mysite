@@ -1,23 +1,31 @@
 {% extends 'layout.html' %}
 
-{% block body %}
-<div class="container">
-    <div class="row mt-3">
-        <div class="col">
-            <h3>Resources Page</h3>
+{% block main %}
+<section id="resources">
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col">
+                <div class="section-title">
+                    <h2>Resources</h2>
+                    <p>Welcome to my resources page. It is where i keep awesome stuffs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for resource in object_list %}
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="card m-2">
+                    <div class="card-body pb-0">
+                        <h5><a href="{{ resource.link }}">{{ resource.name }}</a></h5>
+                        <p>{{ resource.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <hr>
-    <div class="row">
-        {% for resource in object_list %}
-        <div class="col-sm-12 col-md-4 col-lg-3">
-            <h5><a href="{{ resource.link }}">{{ resource.name }}</a></h5>
-            <small>{{ resource.category }}</small>
-            <p>{{ resource.description }}</p>
-        </div>
-        {% endfor %}
-    </div>
-</div>
-{% endblock body %}
+</section>
+
+{% endblock main %}
 
 

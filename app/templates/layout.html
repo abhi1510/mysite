@@ -13,7 +13,10 @@
 
     <!--  Google fonts  -->
     <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i">
+          href="https://fonts.googleapis.com/css?family=Bitter:300,300i,400,400i,500,500i,600,600i,700,700i">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Lora:300,300i,400,400i,500,500i,600,600i,700,700i">
+
 
     <!-- Vendor CSS Files -->
     <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -25,34 +28,54 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">Abhinav</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!-- ======= nav menu toggle button ======= -->
+<button type="button" class="nav-menu-toggle d-xl-none">
+    <i class="bx bx-menu"></i>
+</button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('index_view') }}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('post_list_view') }}">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('resources_view') }}">Resources</a>
-                </li>
+<!-- ======= Sidebar ======= -->
+<div id="sidebar">
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="{{ url_for('static', filename='img/profile.jpg') }}" alt=""
+                 class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="index.html">Abhinav Kumar</a></h1>
+            <div class="social-links mt-3 text-center">
+                <a href="https://twitter.com/abhinavkumar127" target="_blank"><i class="bx bxl-twitter"></i></a>
+                <a href="https://www.facebook.com/abhin1592" target="_blank"><i class="bx bxl-facebook"></i></a>
+                <a href="https://github.com/abhi1510" target="_blank"><i class="bx bxl-github"></i></a>
+                <a href="https://www.linkedin.com/in/abhinav-kumar-4a0148143/" target="_blank"><i
+                        class="bx bxl-linkedin"></i></a>
+            </div>
+        </div><!-- .profile -->
+
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{{ url_for('index_view') }}"><i class="bx bx-home"></i> Home</a></li>
+                <li><a href="{{ url_for('post_list_view') }}"><i class="bx bx-file-blank"></i>Blog</a></li>
+                <li><a href="{{ url_for('resources_view') }}"><i class="bx bx-file-blank"></i>Resources</a></li>
+                <li><a href="{{ url_for('about_view') }}"><i class="bx bx-user"></i> About</a></li>
+                <li><a href="{{ url_for('contact_view') }}"><i class="bx bx-envelope"></i> Contact</a></li>
+
             </ul>
-        </div>
-    </div>
-</nav>
+        </nav><!-- .nav-menu -->
 
-{% block body %}{% endblock body %}
+    </div>
+</div><!-- End Sidebar -->
+
+
+<!-- ======= Main ======= -->
+<div id="main">
+
+{% block main %}{% endblock main %}
+
+</div><!-- End Main -->
 
 <!-- Vendor JS Files -->
 <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/typed.js/typed.min.js') }}"></script>
 
 
 <!--  Custom JS Files  -->

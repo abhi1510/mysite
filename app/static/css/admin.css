@@ -1,0 +1,19 @@
+body {
+    font-family: Lora;
+}
+
+.table th, .table td {
+    text-align: center;
+}
+
+.table td {
+    font-size: 14px;
+}
+
+.pagination {
+    justify-content: flex-end;
+}
+.pagination-page-info {
+    font-size: 12px;
+    color: #777;
+}

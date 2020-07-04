@@ -1,8 +1,10 @@
 from app import db
-from app.models import Post, Resource
+from app.config import Config
+from app.models import Post, Resource, Contact
 
 
-NUMBER_OF_POSTS = 5
+NUMBER_OF_POSTS = 15
+NUMBER_OF_CONTACTS = 12
 NUMBER_OF_RESOURCES = 20
 
 
@@ -22,8 +24,18 @@ def create_posts():
     print(f'{NUMBER_OF_POSTS} posts added!')
 
 
+def create_contacts():
+    for i in range(NUMBER_OF_CONTACTS):
+        c = Contact(name='John Doe', email='john.doe@gmail.com', subject=Config.CONTACT_SUBJECT,
+                    message='This is a test message')
+        db.session.add(c)
+    db.session.commit()
+    print(f'{NUMBER_OF_CONTACTS} contacts added!')
+
+
 if __name__ == '__main__':
     db.drop_all()
     db.create_all()
     create_posts()
     create_resources()
+    create_contacts()

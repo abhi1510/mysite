@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+
+
+<section id="home">
+    <div class="overlay"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="{{ url_for('static', filename='TypingVidevo.mov') }}" type="video/mp4">
+    </video>
+    <div class="container h-100">
+        <div class="d-flex h-100 text-center align-items-center">
+            <div class="w-100 text-white">
+                <h1>Abhinav Kumar</h1>
+                <!--                    <p class="lead mb-0">With HTML5 Video and Bootstrap 4</p>-->
+                <p>I'm <span class="typed"
+                             data-typed-items="Backend Developer, Frontend Developer, Full Stack Developer, Team Lead"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock main %}

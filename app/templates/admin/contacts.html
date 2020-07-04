@@ -1,0 +1,38 @@
+{% extends 'admin/layout.html' %}
+
+{% block body %}
+<div class="row mt-3">
+    <div class="col">
+        <div class="table-responsive">
+            <table class="table table-bordered post-table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for instance in object_list %}
+                <tr>
+                    <td>{{ instance.id }}</td>
+                    <td>{{ instance.name }}</td>
+                    <td>{{ instance.email }} mins</td>
+                    <td>{{ instance.subject }}</td>
+                    <td>{{ instance.message }}</td>
+                    <td>{{ instance.created_on.strftime('%B %d, %Y at %H:%M:%S') }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="d-flex justify-content-between">
+            {{ pagination.info }}
+            {{ pagination.links }}
+        </div>
+    </div>
+</div>
+{% endblock body %}

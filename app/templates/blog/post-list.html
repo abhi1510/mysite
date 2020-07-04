@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+<div class="parallax" style="height: 300px; background-image: url('https://images.unsplash.com/photo-1592495326895-c515699a0e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1182&q=80');">
+    <div class="overlay">
+        <div class="display-4 text-white">Welcome to my Blog</div>
+    </div>
+</div>
+<div class="container">
+    <div class="row my-5 px-4">
+        <div class="col">
+            {% for instance in object_list %}
+            <h1>
+                <a href="{{ url_for('post_detail_view', pk=instance.id) }}" class="post-title">{{ instance.title }}</a>
+            </h1>
+            <h4 class="post-content">{{ instance.content[:100] }}</h4>
+            <p class="post-meta">Posted by {{ instance.author }} on {{ instance.created_on.strftime('%B %d, %Y') }}
+                <span class="reading-time mx-3" title="Estimated read time">
+                    {{ instance.read_time }} mins  read
+                </span>
+                <span class="views">
+                    {{ instance.views }} views
+                </span>
+            </p>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock main %}
