@@ -193,7 +193,7 @@ section {
 }
 
 .section-title p {
-  color: #bbb;
+  color: #828282;
   margin-bottom: 2rem;
 }
 
@@ -277,8 +277,20 @@ section {
 --------------------------------------------------------------*/
 
 #resources .card {
+  background: inherit;
   border-radius: 0;
 }
+
+#resources .card-body h5 > a {
+    font-size: 16px;
+    color: var(--theme-primary);
+}
+
+#resources .card-body p {
+    font-size: 14px;
+    color: var(--theme-primary-light);
+}
+
 
 /*--------------------------------------------------------------
 # Post List

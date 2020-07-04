@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-<div class="parallax" style="height: 300px; background-image: url('https://images.unsplash.com/photo-1592495326895-c515699a0e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1182&q=80');">
+<div class="parallax"
+     style="height: 300px; background-image: url('https://images.unsplash.com/photo-1592495326895-c515699a0e04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1182&q=80');">
     <div class="overlay">
         <div class="display-4 text-white">Welcome to my Blog</div>
     </div>
@@ -24,6 +25,10 @@
             </p>
             <hr>
             {% endfor %}
+            <div class="d-flex justify-content-between">
+                {{ pagination.info }}
+                {{ pagination.links }}
+            </div>
         </div>
     </div>
 </div>

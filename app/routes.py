@@ -38,8 +38,13 @@ def contact_view():
 
 @app.route('/posts')
 def post_list_view():
-    posts = Post.query.all()
-    return render_template('blog/post-list.html', object_list=posts)
+    object_list = Post.query.order_by(Post.created_on.desc()).all()
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    total = len(object_list)
+    paginated_list = object_list[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+    return render_template('blog/post-list.html', object_list=paginated_list, page=page,
+                           per_page=per_page, pagination=pagination)
 
 
 @app.route('/posts/<pk>')
@@ -60,8 +65,13 @@ def post_create_view():
 
 @app.route('/resources')
 def resources_view():
-    resources = Resource.query.all()
-    return render_template('resources.html', object_list=resources)
+    object_list = Resource.query.all()
+    page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
+    total = len(object_list)
+    paginated_list = object_list[offset: offset + per_page]
+    pagination = Pagination(page=page, per_page=per_page, total=total, css_framework='bootstrap4')
+    return render_template('resources.html', object_list=paginated_list, page=page,
+                           per_page=per_page, pagination=pagination)
 
 
 # Admin routes
@@ -73,7 +83,7 @@ def admin_dashboard():
 
 @app.route('/admin/posts')
 def admin_post_list_view():
-    object_list = Post.query.order_by(Post.created_on.asc()).all()
+    object_list = Post.query.order_by(Post.created_on.desc()).all()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     total = len(object_list)
     paginated_list = object_list[offset: offset + per_page]
@@ -100,7 +110,7 @@ def admin_post_create_view():
 
 @app.route('/admin/resources')
 def admin_resource_list_view():
-    object_list = Resource.query.order_by(Resource.created_on.asc()).all()
+    object_list = Resource.query.order_by(Resource.created_on.desc()).all()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
     total = len(object_list)
     paginated_list = object_list[offset: offset + per_page]
@@ -113,7 +123,7 @@ def admin_resource_list_view():
 def admin_resource_create_view():
     form = ResourceForm()
     if form.validate_on_submit():
-        name = form.name.name
+        name = form.name.data
         description = form.description.data
         link = form.link.data
         category = form.category.data

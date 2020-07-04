@@ -3,14 +3,15 @@ from app.config import Config
 from app.models import Post, Resource, Contact
 
 
-NUMBER_OF_POSTS = 15
-NUMBER_OF_CONTACTS = 12
-NUMBER_OF_RESOURCES = 20
+NUMBER_OF_POSTS = 30
+NUMBER_OF_CONTACTS = 20
+NUMBER_OF_RESOURCES = 50
 
 
 def create_resources():
     for i in range(NUMBER_OF_RESOURCES):
-        r = Resource(name=f'Resource {i+1}', link='https://unsplash.com/s/photos/blog', category='images')
+        r = Resource(name=f'Resource {i+1}', description='Python Official docs',
+                     link='https://unsplash.com/s/photos/blog', category='python')
         db.session.add(r)
     db.session.commit()
     print(f'{NUMBER_OF_RESOURCES} resources added!')
