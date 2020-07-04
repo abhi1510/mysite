@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 0.6rem 0;
+  padding: 0.6rem;
   overflow: hidden;
   min-height: 100vh;
 }
@@ -188,14 +188,14 @@ section {
 
 .section-title {
   padding-bottom: 30px;
-  text-align: center;
 }
 
 .section-title h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding-bottom: 0.8rem;
+  font-size: 34px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  position: relative;
+  color: var(--theme-primary);
 }
 
 .section-title p {
