@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import render_template, redirect, flash, url_for, request
 from flask_paginate import Pagination, get_page_args
-from flask_login import login_user
+from flask_login import login_user, login_required
 
 from app import app, db
 from app.config import Config
@@ -82,11 +82,13 @@ def resources_view():
 # Admin routes
 
 @app.route('/admin')
+@login_required
 def admin_dashboard():
     return render_template('admin/dashboard.html')
 
 
 @app.route('/admin/posts')
+@login_required
 def admin_post_list_view():
     object_list = Post.query.order_by(Post.created_on.desc()).all()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
@@ -98,6 +100,7 @@ def admin_post_list_view():
 
 
 @app.route('/admin/posts/create', methods=['GET', 'POST'])
+@login_required
 def admin_post_create_view():
     form = PostForm()
     if form.validate_on_submit():
@@ -114,6 +117,7 @@ def admin_post_create_view():
 
 
 @app.route('/admin/posts/<pk>/update', methods=['GET', 'POST'])
+@login_required
 def admin_post_update_view(pk):
     form = PostForm()
     instance = Post.query.get(pk)
@@ -135,6 +139,7 @@ def admin_post_update_view(pk):
 
 
 @app.route('/admin/posts/<pk>/delete')
+@login_required
 def admin_post_delete_view(pk):
     instance = Post.query.get(pk)
     db.session.delete(instance)
@@ -144,6 +149,7 @@ def admin_post_delete_view(pk):
 
 
 @app.route('/admin/resources')
+@login_required
 def admin_resource_list_view():
     object_list = Resource.query.order_by(Resource.created_on.desc()).all()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
@@ -155,6 +161,7 @@ def admin_resource_list_view():
 
 
 @app.route('/admin/resources/create', methods=['GET', 'POST'])
+@login_required
 def admin_resource_create_view():
     form = ResourceForm()
     if form.validate_on_submit():
@@ -171,6 +178,7 @@ def admin_resource_create_view():
 
 
 @app.route('/admin/resources/<pk>/update', methods=['GET', 'POST'])
+@login_required
 def admin_resource_update_view(pk):
     form = ResourceForm()
     instance = Resource.query.get(pk)
@@ -191,6 +199,7 @@ def admin_resource_update_view(pk):
 
 
 @app.route('/admin/resources/<pk>/delete')
+@login_required
 def admin_resource_delete_view(pk):
     instance = Resource.query.get(pk)
     db.session.delete(instance)
@@ -200,6 +209,7 @@ def admin_resource_delete_view(pk):
 
 
 @app.route('/admin/contacts')
+@login_required
 def admin_contact_list_view():
     object_list = Contact.query.order_by(Contact.created_on.desc()).all()
     page, per_page, offset = get_page_args(page_parameter='page', per_page_parameter='per_page')
