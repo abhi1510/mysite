@@ -70,7 +70,8 @@
 {% block body %}{% endblock body %}
 
 <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.min.js') }}"></script>
 <script src="https://cdn.ckeditor.com/4.14.1/standard/ckeditor.js"></script>
 <script>
     CKEDITOR.replace( 'content' );

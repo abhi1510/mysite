@@ -2,7 +2,7 @@ $(document).ready(() => {
     $('.nav-menu-toggle').click(() => {
         $('#sidebar').toggleClass('active');
         $('.nav-menu-toggle').toggleClass('active');
-        $('.nav-menu-toggle i').toggleClass('bx-menu bx-window-close');
+        $('.nav-menu-toggle i').toggleClass('fa-window-close');
     });
 
     if ($('.typed').length) {

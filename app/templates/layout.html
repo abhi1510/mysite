@@ -19,8 +19,8 @@
 
 
     <!-- Vendor CSS Files -->
-    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='vendor/bootstrap/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!--  Custom CSS Files  -->
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
@@ -30,7 +30,7 @@
 
 <!-- ======= nav menu toggle button ======= -->
 <button type="button" class="nav-menu-toggle d-xl-none">
-    <i class="bx bx-menu"></i>
+    <i class="fa fa-bars"></i>
 </button>
 
 <!-- ======= Sidebar ======= -->
@@ -42,30 +42,30 @@
                  class="img-fluid rounded-circle">
             <h1 class="text-light"><a href="index.html">Abhinav Kumar</a></h1>
             <div class="social-links mt-3 text-center">
-                <a href="https://twitter.com/abhinavkumar127" target="_blank"><i class="bx bxl-twitter"></i></a>
-                <a href="https://www.facebook.com/abhin1592" target="_blank"><i class="bx bxl-facebook"></i></a>
-                <a href="https://github.com/abhi1510" target="_blank"><i class="bx bxl-github"></i></a>
+                <a href="https://twitter.com/abhinavkumar127" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a href="https://www.facebook.com/abhin1592" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://github.com/abhi1510" target="_blank"><i class="fa fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/abhinav-kumar-4a0148143/" target="_blank"><i
-                        class="bx bxl-linkedin"></i></a>
+                        class="fa fa-linkedin"></i></a>
             </div>
         </div><!-- .profile -->
 
         <nav class="nav-menu">
             <ul>
                 <li class="{% if active_page == 'home' %}active{% endif %}">
-                    <a href="{{ url_for('index_view') }}"><i class="bx bx-home"></i> Home</a>
+                    <a href="{{ url_for('index_view') }}"><i class="fa fa-home" style="font-size: 18px"></i> Home</a>
                 </li>
                 <li  class="{% if active_page == 'blog' %}active{% endif %}">
-                    <a href="{{ url_for('post_list_view') }}"><i class="bx bx-pencil"></i>Blog</a>
+                    <a href="{{ url_for('post_list_view') }}"><i class="fa fa-keyboard-o"></i>Blog</a>
                 </li>
                 <li  class="{% if active_page == 'resources' %}active{% endif %}">
-                    <a href="{{ url_for('resources_view') }}"><i class="bx bx-file-blank"></i>Resources</a>
+                    <a href="{{ url_for('resources_view') }}"><i class="fa fa-book"></i>Resources</a>
                 </li>
                 <li  class="{% if active_page == 'about' %}active{% endif %}">
-                    <a href="{{ url_for('about_view') }}"><i class="bx bx-user"></i> About</a>
+                    <a href="{{ url_for('about_view') }}"><i class="fa fa-user"></i> About</a>
                 </li>
                 <li  class="{% if active_page == 'contact' %}active{% endif %}">
-                    <a href="{{ url_for('contact_view') }}"><i class="bx bx-envelope"></i> Contact</a>
+                    <a href="{{ url_for('contact_view') }}"><i class="fa fa-envelope"></i> Contact</a>
                 </li>
 
             </ul>
@@ -84,8 +84,9 @@
 
 <!-- Vendor JS Files -->
 <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static', filename='vendor/typed.js/typed.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/popper.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/bootstrap/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='vendor/typed.js/typed.js') }}"></script>
 
 
 <!--  Custom JS Files  -->
