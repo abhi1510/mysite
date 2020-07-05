@@ -185,14 +185,10 @@ section {
   min-height: 100vh;
 }
 
-
-.section-title {
-  padding-bottom: 30px;
-}
-
 .section-title h2 {
   font-size: 34px;
   font-weight: bold;
+  padding-top: 10px;
   padding-bottom: 10px;
   position: relative;
   color: var(--theme-primary);
