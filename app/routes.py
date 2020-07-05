@@ -6,7 +6,7 @@ from flask_login import login_user, login_required
 
 from app import app, db
 from app.config import Config
-from app.models import Post, Resource, Contact, User
+from app.models import Post, Resource, Contact, Account
 from app.forms import PostForm, ContactForm, ResourceForm, LoginForm
 
 
@@ -226,8 +226,8 @@ def admin_login_view():
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
-        user = User.query.filter_by(username=username).first()
-        if user and user.password == password:
+        user = Account.query.filter_by(username=username).first()
+        if user and user.password == password and user.is_admin:
             login_user(user)
             return redirect(url_for('admin_dashboard'))
         else:

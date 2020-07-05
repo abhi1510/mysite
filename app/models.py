@@ -7,17 +7,17 @@ DEFAULT_POST_AUTHOR = 'Abhinav Kumar'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Account.query.get(int(user_id))
 
 
-class User(db.Model):
+class Account(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(20), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
-        return f'Post: {self.username}'
+        return f'Username: {self.username}'
 
 
 class Post(db.Model):
