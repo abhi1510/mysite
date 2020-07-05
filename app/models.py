@@ -1,5 +1,6 @@
 from datetime import datetime
 from app import db, login_manager
+from flask_login import UserMixin
 
 DEFAULT_POST_IMG = 'https://images.unsplash.com/photo-1519337265831-281ec6cc8514?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
 DEFAULT_POST_AUTHOR = 'Abhinav Kumar'
@@ -10,7 +11,7 @@ def load_user(user_id):
     return Account.query.get(int(user_id))
 
 
-class Account(db.Model):
+class Account(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), nullable=False)
     password = db.Column(db.String(20), nullable=False)
